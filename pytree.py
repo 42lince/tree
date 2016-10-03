@@ -5,6 +5,7 @@ import os
 
 # YOUR CODE GOES here
 
+
 def myTree(path):
     result = [os.path.basename(path)]
     if os.path.isdir(path) and os.listdir(path):
@@ -61,6 +62,7 @@ def prettyDisplay(tree, path):
         totalFileCount -= 1
 
     print(printDirectory() + ', ' + printFiles())
+
 
 totalDirCount = 0
 totalFileCount = 0
