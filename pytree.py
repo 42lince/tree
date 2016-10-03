@@ -49,6 +49,7 @@ def printFiles():
     else:
         return '{} files'.format(totalFileCount)
 
+
 def prettyDisplay(tree, path):
     for line in tree:
         print(line)
@@ -71,4 +72,3 @@ if len(sys.argv) > 1:
 else:
     path = "."
 prettyDisplay(myTree(path), path)
-
