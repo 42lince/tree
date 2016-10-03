@@ -29,8 +29,7 @@ def myTree(path):
                 subtree = myTree(path + "/" + sortedContent[i])
 
                 for j in range(len(subtree)):
-                    
-                    result.append(indent(i, j, len(sortedContent)-1) + subtree[j])
+                    result.append(indent(i, j, len(sortedContent) - 1) + subtree[j])
         global totalDirCount
         totalDirCount += 1
     else:
