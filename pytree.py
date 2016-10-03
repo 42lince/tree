@@ -6,6 +6,18 @@ import os
 # YOUR CODE GOES here
 
 
+def indent(i, j, iLastIndex):
+    if j == 0:
+        if i == iLastIndex:
+            return "`-- "
+        else:
+            return "|-- "
+    elif i == iLastIndex:
+        return "    "
+    else:
+        return "|   "
+
+
 def myTree(path):
     result = [os.path.basename(path)]
     if os.path.isdir(path):
@@ -16,18 +28,9 @@ def myTree(path):
             if sortedContent[i][0] != '.':
                 subtree = myTree(path + "/" + sortedContent[i])
 
-                indent = ""
                 for j in range(len(subtree)):
-                    if j == 0:
-                        if i == len(allContent) - 1:
-                            indent = "`-- "
-                        else:
-                            indent = "|-- "
-                    elif i == len(allContent) - 1:
-                        indent = "    "
-                    else:
-                        indent = "|   "
-                    result.append(indent + subtree[j])
+                    
+                    result.append(indent(i, j, len(sortedContent)-1) + subtree[j])
         global totalDirCount
         totalDirCount += 1
     else:
