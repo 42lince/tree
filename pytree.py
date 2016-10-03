@@ -5,7 +5,6 @@ import os
 
 # YOUR CODE GOES here
 
-
 def myTree(path):
     result = [os.path.basename(path)]
     if os.path.isdir(path) and os.listdir(path):
@@ -28,16 +27,50 @@ def myTree(path):
                     else:
                         indent = "|   "
                     result.append(indent + subtree[j])
+        global totalDirCount
+        totalDirCount += 1
+    else:
+        global totalFileCount
+        totalFileCount += 1
     return result
 
-def prettyDisplay(tree):
+def printDirectory():
+    if totalDirCount == 1:
+        return '{} directory'.format(totalDirCount)
+    else:
+        return '{} directories'.format(totalDirCount)
+
+def printFiles():
+    if totalFileCount == 1:
+        return '{} file'.format(totalFileCount)
+    else:
+        return '{} files'.format(totalFileCount)
+
+
+
+def prettyDisplay(tree, path):
     for line in tree:
         print(line)
+    print('')
 
+    if os.path.isdir(path):
+        global totalDirCount
+        totalDirCount -= 1
+    else:
+        global totalFileCount
+        totalFileCount -= 1
+
+    print(printDirectory() + ', ' + printFiles())
+
+
+
+totalDirCount = 0
+totalFileCount = 0
 if len(sys.argv) > 1:
     path = sys.argv[1]
 else:
     path = "."
-prettyDisplay(myTree(path))
+prettyDisplay(myTree(path), path)
+
     # just for demo
     #subprocess.run(['tree'] + sys.argv[1:])
