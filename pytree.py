@@ -9,18 +9,18 @@ def myTree(path):
     result = [os.path.basename(path)]
     if os.path.isdir(path) and os.listdir(path):
         allContent = os.listdir(path)
-        #sort all the files in alphabetical order
+        # sort all the files in alphabetical order
         sortedContent = sorted(allContent, key=lambda e: e.lstrip('_').lower())
         for i in range(len(sortedContent)):
             if sortedContent[i][0] != '.':
-                subtree = myTree(path + "/"+ sortedContent[i])
+                subtree = myTree(path + "/" + sortedContent[i])
 
                 indent = ""
                 for j in range(len(subtree)):
                     if j == 0:
                         if i == len(allContent) - 1:
                             indent = "`-- "
-                        else: 
+                        else:
                             indent = "|-- "
                     elif i == len(allContent) - 1:
                         indent = "    "
@@ -34,19 +34,19 @@ def myTree(path):
         totalFileCount += 1
     return result
 
+
 def printDirectory():
     if totalDirCount == 1:
-        return '{} directory'.format(totalDirCount)
+        return '1 directory'
     else:
         return '{} directories'.format(totalDirCount)
 
+
 def printFiles():
     if totalFileCount == 1:
-        return '{} file'.format(totalFileCount)
+        return '1 file'
     else:
         return '{} files'.format(totalFileCount)
-
-
 
 def prettyDisplay(tree, path):
     for line in tree:
@@ -62,8 +62,6 @@ def prettyDisplay(tree, path):
 
     print(printDirectory() + ', ' + printFiles())
 
-
-
 totalDirCount = 0
 totalFileCount = 0
 if len(sys.argv) > 1:
@@ -72,5 +70,3 @@ else:
     path = "."
 prettyDisplay(myTree(path), path)
 
-    # just for demo
-    #subprocess.run(['tree'] + sys.argv[1:])
