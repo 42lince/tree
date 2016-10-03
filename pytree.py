@@ -10,7 +10,7 @@ def myTree(path):
     if os.path.isdir(path) and os.listdir(path):
         allContent = os.listdir(path)
         #sort all the files in alphabetical order
-        sortedContent = sorted(allContent, key=lambda e: e.lower())
+        sortedContent = sorted(allContent, key=lambda e: e.lstrip('_').lower())
         for i in range(len(sortedContent)):
             if sortedContent[i][0] != '.':
                 subtree = myTree(path + "/"+ sortedContent[i])
