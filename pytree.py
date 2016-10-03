@@ -8,7 +8,7 @@ import os
 
 def myTree(path):
     result = [os.path.basename(path)]
-    if os.path.isdir(path) and os.listdir(path):
+    if os.path.isdir(path):
         allContent = os.listdir(path)
         # sort all the files in alphabetical order
         sortedContent = sorted(allContent, key=lambda e: e.lstrip('_').lower())
