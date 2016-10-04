@@ -4,14 +4,14 @@ import sys
 import os
 
 # YOUR CODE GOES here
-
+:
 
 def indent(i, j, iLastIndex):
     if j == 0:
         if i == iLastIndex:
-            return "`-- "
+            return "└── "
         else:
-            return "|-- "
+            return "├── "
     elif i == iLastIndex:
         return "    "
     else:
