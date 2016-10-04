@@ -15,7 +15,7 @@ def indent(i, j, iLastIndex):
     elif i == iLastIndex:
         return "    "
     else:
-        return "│   "
+        return "│   "
 
 
 def myTree(path):
