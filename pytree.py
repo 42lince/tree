@@ -73,4 +73,8 @@ if len(sys.argv) > 1:
     path = sys.argv[1]
 else:
     path = "."
-prettyDisplay(myTree(path), path)
+
+treeresult = myTree(path)
+treeresult[0] = path
+
+prettyDisplay(treeresult, path)
